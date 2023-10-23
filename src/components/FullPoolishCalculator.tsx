@@ -44,7 +44,10 @@ export default function FullPoolishCalculator() {
 	//todo checkbox for switch to 5% - 10% sourdough in the main dough. and little yeast in poolish
 	return (
 		<div className='space-y-8'>
-			<h1 className='text-2xl md:text-6xl mb-4 uppercase font-bold'>Pizza Dough Calculator</h1>
+			<header>
+				<h1 className='text-2xl md:text-6xl uppercase font-bold'>Pizza Dough Calculator</h1>
+				<h2 className='text-md mt-0 mb-4 uppercase font-bold'>Recipe by Vito Iacopelli</h2>
+			</header>
 
 			<section className='grid md:flex gap-4 md:justify-between'>
 				<form className='space-y-4'>
