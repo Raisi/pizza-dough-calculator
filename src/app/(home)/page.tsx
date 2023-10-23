@@ -36,12 +36,12 @@ function CameraController() {
 
 		// Dynamic rotation based on mouse position
 		const rotationSpeedX = mouse.current.x * 0.1;
-		const rotationSpeedY = mouse.current.y * 0.1;
-		camera.position.x = 10 * Math.sin(clock.current * rotationSpeedX);
+		const rotationSpeedY = mouse.current.y * 0.01;
+		// camera.position.x = 10 * Math.sin(clock.current * rotationSpeedX);
 		camera.position.y = 4 + 4 * Math.sin(clock.current * 0.3);
 		// camera.position.z = 10 * Math.cos(clock.current * rotationSpeedY);
 
-		camera.lookAt(0, 0, 0);
+		camera.lookAt(5, 2, 0);
 	});
 
 	return null;
@@ -50,15 +50,16 @@ function CameraController() {
 export default function Home() {
 	return (
 		<main className='grid w-[100vw] h-[100vh] place-items-center'>
-			<section className='container mx-auto max-w-4xl text-center'>
+			<section className='container mx-auto max-w-4xl md:text-center px-2'>
 				<Canvas
+					className='hidden md:block'
 					style={{
 						position: 'absolute',
 						zIndex: -1,
-						top: '10vh',
+						top: '0',
 						left: 0,
 						width: '100vw',
-						height: '90vh'
+						height: '100vh'
 					}}
 					camera={{
 						type: 'perspective',

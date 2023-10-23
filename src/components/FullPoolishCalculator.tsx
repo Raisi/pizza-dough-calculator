@@ -43,63 +43,75 @@ export default function FullPoolishCalculator() {
 
 	//todo checkbox for switch to 5% - 10% sourdough in the main dough. and little yeast in poolish
 	return (
-		<div className='space-y-4'>
-			<div className='space-y-4'>
-				<h1 className='text-4xl mb-4 uppercase'>Pizza Dough Calculator</h1>
+		<div className='space-y-8'>
+			<h1 className='text-2xl md:text-6xl mb-4 uppercase font-bold'>Pizza Dough Calculator</h1>
 
-				<div>
-					<label className='block text-sm font-medium'>Dough Ball Weight (g):</label>
-					<input
-						type='number'
-						className='mt-1 p-2 w-full border rounded-md text-slate-900'
-						value={doughBallWeight}
-						onChange={(e) => setDoughBallWeight(e.target.value)}
-					/>
-				</div>
-
-				<div>
-					<label className='block text-sm font-medium'>Number of Dough Balls:</label>
-					<input
-						type='number'
-						className='mt-1 p-2 w-full border rounded-md text-slate-900'
-						value={numberOfBalls}
-						onChange={(e) => setNumberOfBalls(e.target.value)}
-					/>
-				</div>
-			</div>
-			<section>
-				<h2 className='text-lg'>Ingredients:</h2>
-				<section className='grid gap-10'>
-					<h3>Total Dough Weight: {totalDoughWeight}g</h3>
-					<div className=''>
-						<h3 className='text-md font-semibold'>First Mixture:</h3>
-						<ul>
-							<li>Flour: {firstMixture.flour.toFixed(2)}g</li>
-							<li>Water: {firstMixture.water.toFixed(2)}g</li>
-							<li>Yeast: {firstMixture.yeast.toFixed(2)}g</li>
-							<li>Honey: {firstMixture.honey.toFixed(2)}g</li>
-						</ul>
+			<section className='grid md:flex gap-4 md:justify-between'>
+				<form className='space-y-4'>
+					<div>
+						<label className='block text-base font-medium text-left'>Dough Ball Weight (g):</label>
+						<input
+							type='number'
+							className='mt-1 p-2 w-full border rounded-md text-slate-900'
+							value={doughBallWeight}
+							onChange={(e) => setDoughBallWeight(e.target.value)}
+						/>
 					</div>
 
 					<div>
-						<h3 className='text-md font-semibold'>Second Mixture:</h3>
-						<ul>
-							<li>Flour: {secondMixture.flour.toFixed(2)}g</li>
-							<li>Salt: {secondMixture.salt.toFixed(2)}g</li>
-							<li>Yeast: {secondMixture.yeast.toFixed(2)}g</li>
-							<li>Olive Oil: {secondMixture.oliveOil.toFixed(2)}g</li>
-						</ul>
+						<label className='block text-base font-medium text-left'>Number of Dough Balls:</label>
+						<input
+							type='number'
+							className='mt-1 p-2 w-full border rounded-md text-slate-900'
+							value={numberOfBalls}
+							onChange={(e) => setNumberOfBalls(e.target.value)}
+						/>
 					</div>
-				</section>
+				</form>
+				<aside>
+					<h2 className='text-2xl font-semibold'>Ingredients:</h2>
+					<ul>
+						<li>{(firstMixture.flour + secondMixture.flour).toFixed(2)}g Flour</li>
+						<li>{firstMixture.water.toFixed(2)}g Water</li>
+						<li>{(firstMixture.yeast + secondMixture.yeast).toFixed(2)}g Yeast</li>
+						<li>{firstMixture.honey.toFixed(2)}g Honey</li>
+						<li>{secondMixture.salt.toFixed(2)}g Salt</li>
+						<li>{secondMixture.oliveOil.toFixed(2)}g Olive Oil</li>
+					</ul>
+				</aside>
 			</section>
-			<footer>
+			<section className='md:grid gap-10 grid-cols-3'>
+				<h3 className='font-semibold text-xl md:text-3xl self-center'>
+					Total Dough Weight: {totalDoughWeight}g
+				</h3>
+				<div className=''>
+					<h3 className='text-lg font-semibold'>Poolish:</h3>
+					<ul>
+						<li>Flour: {firstMixture.flour.toFixed(2)}g</li>
+						<li>Water: {firstMixture.water.toFixed(2)}g</li>
+						<li>Yeast: {firstMixture.yeast.toFixed(2)}g</li>
+						<li>Honey: {firstMixture.honey.toFixed(2)}g</li>
+					</ul>
+				</div>
+
+				<div>
+					<h3 className='text-lg font-semibold'>Second Mixture:</h3>
+					<ul>
+						<li>Flour: {secondMixture.flour.toFixed(2)}g</li>
+						<li>Salt: {secondMixture.salt.toFixed(2)}g</li>
+						<li>Yeast: {secondMixture.yeast.toFixed(2)}g</li>
+						<li>Olive Oil: {secondMixture.oliveOil.toFixed(2)}g</li>
+					</ul>
+				</div>
+			</section>
+			<footer className='flex'>
 				<a
-					className='transition-all text-yellow-600 duration-300 hover:text-slate-900 inline-block p-4 bg-transparent hover:bg-yellow-600 rounded-md'
+					className='mx-auto transition-all text-yellow-600 duration-300 hover:text-slate-900 inline-block p-4 bg-transparent hover:bg-yellow-600 rounded-md'
 					href='https://www.youtube.com/watch?v=xUEYRiZlyUM'
 					target='_blank'
 					rel='nofollow'
 				>
-					Instruction Video
+					Instructions Video on Youtube
 				</a>
 			</footer>
 		</div>
