@@ -1,12 +1,18 @@
 'use client';
 import FullPoolishCalculator from '@/components/FullPoolishCalculator';
 import { useState, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 
 function PizzaModel() {
 	const gltf = useGLTF('/models/pizza.glb');
-	return <primitive object={gltf.scene} tra />;
+	const mesh = gltf.scene;
+
+	useFrame(({ clock }) => {
+		mesh.rotation.y = clock.getElapsedTime() * 0.3;
+	});
+
+	return <primitive object={mesh} />;
 }
 
 export default function Home() {
