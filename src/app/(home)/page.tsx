@@ -20,7 +20,7 @@ function CameraController() {
 	const clock = useRef(0);
 
 	useEffect(() => {
-		const handleMouseMove = (event) => {
+		const handleMouseMove = (event: any) => {
 			mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
 		};

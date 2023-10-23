@@ -1,5 +1,6 @@
 'use client';
 
+import { parse } from 'path';
 import { useState } from 'react';
 
 export default function FullPoolishCalculator() {
@@ -57,7 +58,7 @@ export default function FullPoolishCalculator() {
 							type='number'
 							className='mt-1 p-2 w-full border rounded-md text-slate-900'
 							value={doughBallWeight}
-							onChange={(e) => setDoughBallWeight(e.target.value)}
+							onChange={(e) => setDoughBallWeight(parseInt(e.target.value, 10))}
 						/>
 					</div>
 
@@ -67,7 +68,7 @@ export default function FullPoolishCalculator() {
 							type='number'
 							className='mt-1 p-2 w-full border rounded-md text-slate-900'
 							value={numberOfBalls}
-							onChange={(e) => setNumberOfBalls(e.target.value)}
+							onChange={(e) => setNumberOfBalls(parseInt(e.target.value, 10))}
 						/>
 					</div>
 				</form>
