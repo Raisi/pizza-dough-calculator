@@ -94,7 +94,7 @@ export default function FullPoolishCalculator() {
 			</section>
 			<footer>
 				<a
-					className='text-bluetransition-colors text-yellow-300 hover:text-yellow-600'
+					className='transition-all text-yellow-600 duration-300 hover:text-slate-900 inline-block p-4 bg-transparent hover:bg-yellow-600 rounded-md'
 					href='https://www.youtube.com/watch?v=xUEYRiZlyUM'
 					target='_blank'
 					rel='nofollow'
