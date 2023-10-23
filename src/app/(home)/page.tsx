@@ -1,6 +1,6 @@
 'use client';
 import FullPoolishCalculator from '@/components/FullPoolishCalculator';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, useEffect, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 
@@ -15,6 +15,38 @@ function PizzaModel() {
 	return <primitive object={mesh} />;
 }
 
+function CameraController() {
+	const mouse = useRef({ x: 0, y: 0 });
+	const clock = useRef(0);
+
+	useEffect(() => {
+		const handleMouseMove = (event) => {
+			mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
+			mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
+		};
+
+		window.addEventListener('mousemove', handleMouseMove);
+		return () => {
+			window.removeEventListener('mousemove', handleMouseMove);
+		};
+	}, []);
+
+	useFrame(({ camera }) => {
+		clock.current += 0.01;
+
+		// Dynamic rotation based on mouse position
+		const rotationSpeedX = mouse.current.x * 0.1;
+		const rotationSpeedY = mouse.current.y * 0.1;
+		camera.position.x = 10 * Math.sin(clock.current * rotationSpeedX);
+		camera.position.y = 4 + 4 * Math.sin(clock.current * 0.3);
+		// camera.position.z = 10 * Math.cos(clock.current * rotationSpeedY);
+
+		camera.lookAt(0, 0, 0);
+	});
+
+	return null;
+}
+
 export default function Home() {
 	return (
 		<main className='grid w-[100vw] h-[100vh] place-items-center'>
@@ -25,7 +57,7 @@ export default function Home() {
 						zIndex: -1,
 						top: '10vh',
 						left: 0,
-						width: '50vw',
+						width: '100vw',
 						height: '90vh'
 					}}
 					camera={{
@@ -34,6 +66,7 @@ export default function Home() {
 						position: [10, 4, 10] // Set the initial position
 					}}
 				>
+					<CameraController />
 					<ambientLight />
 					<Suspense fallback={null}>
 						<PizzaModel />
