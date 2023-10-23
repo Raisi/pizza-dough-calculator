@@ -10,7 +10,6 @@ export default function FullPoolishCalculator() {
 	const oliveOilAmount = 0.02068966;
 
 	const totalDoughWeight = doughBallWeight * numberOfBalls;
-	// const totalFlour = totalDoughWeight * 0.64732143;
 	const totalFlour = totalDoughWeight / (1 + HYDRATION + oliveOilAmount);
 
 	const percentages = {
@@ -42,31 +41,33 @@ export default function FullPoolishCalculator() {
 		oliveOil: totalFlour * percentages.second.oliveOil
 	};
 
+	//todo checkbox for switch to 5% - 10% sourdough in the main dough. and little yeast in poolish
 	return (
 		<div className='space-y-4'>
-			<h1 className='text-2xl'>Pizza Dough Calculator</h1>
+			<div className='space-y-4'>
+				<h1 className='text-4xl mb-4 uppercase'>Pizza Dough Calculator</h1>
 
-			<div>
-				<label className='block text-sm font-medium'>Dough Ball Weight (g):</label>
-				<input
-					type='number'
-					className='mt-1 p-2 w-full border rounded-md text-slate-900'
-					value={doughBallWeight}
-					onChange={(e) => setDoughBallWeight(e.target.value)}
-				/>
+				<div>
+					<label className='block text-sm font-medium'>Dough Ball Weight (g):</label>
+					<input
+						type='number'
+						className='mt-1 p-2 w-full border rounded-md text-slate-900'
+						value={doughBallWeight}
+						onChange={(e) => setDoughBallWeight(e.target.value)}
+					/>
+				</div>
+
+				<div>
+					<label className='block text-sm font-medium'>Number of Dough Balls:</label>
+					<input
+						type='number'
+						className='mt-1 p-2 w-full border rounded-md text-slate-900'
+						value={numberOfBalls}
+						onChange={(e) => setNumberOfBalls(e.target.value)}
+					/>
+				</div>
 			</div>
-
-			<div>
-				<label className='block text-sm font-medium'>Number of Dough Balls:</label>
-				<input
-					type='number'
-					className='mt-1 p-2 w-full border rounded-md text-slate-900'
-					value={numberOfBalls}
-					onChange={(e) => setNumberOfBalls(e.target.value)}
-				/>
-			</div>
-
-			<div>
+			<section>
 				<h2 className='text-lg'>Ingredients:</h2>
 				<section className='grid gap-10'>
 					<h3>Total Dough Weight: {totalDoughWeight}g</h3>
@@ -90,7 +91,17 @@ export default function FullPoolishCalculator() {
 						</ul>
 					</div>
 				</section>
-			</div>
+			</section>
+			<footer>
+				<a
+					className='text-bluetransition-colors text-yellow-300 hover:text-yellow-600'
+					href='https://www.youtube.com/watch?v=xUEYRiZlyUM'
+					target='_blank'
+					rel='nofollow'
+				>
+					Instruction Video
+				</a>
+			</footer>
 		</div>
 	);
 }
