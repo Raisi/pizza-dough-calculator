@@ -3,8 +3,8 @@
 import { useState } from 'react';
 
 export default function FullPoolishCalculator() {
-	const [doughBallWeight, setDoughBallWeight] = useState(280);
-	const [numberOfBalls, setNumberOfBalls] = useState(9);
+	const [doughBallWeight, setDoughBallWeight] = useState(310);
+	const [numberOfBalls, setNumberOfBalls] = useState(4);
 
 	const HYDRATION = 0.68965517;
 	const oliveOilAmount = 0.02068966;
