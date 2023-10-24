@@ -6,7 +6,10 @@ const font = Advent_Pro({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'Vito Iacopelli 100% Poolish Dough Calculator',
-	description: 'Video https://www.youtube.com/watch?v=xUEYRiZlyUM'
+	description: 'Video https://www.youtube.com/watch?v=xUEYRiZlyUM',
+	openGraph: {
+		images: ['/pizza-by-shaian-rahmest.jpg']
+	}
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
