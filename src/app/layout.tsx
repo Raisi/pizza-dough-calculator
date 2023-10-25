@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Advent_Pro } from 'next/font/google';
 import './globals.css';
+import Head from 'next/head';
 
 const font = Advent_Pro({ subsets: ['latin'] });
 
