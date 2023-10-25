@@ -1,18 +1,34 @@
 'use client';
 
-import { parse } from 'path';
-import { useState } from 'react';
+import gsap from 'gsap';
+import { useEffect, useState } from 'react';
+import { useIsFirstRender } from 'usehooks-ts';
 
 export default function FullPoolishCalculator() {
 	const [doughBallWeight, setDoughBallWeight] = useState(310);
 	const [numberOfBalls, setNumberOfBalls] = useState(4);
-
+	const isFirstRender = useIsFirstRender();
 	const HYDRATION = 0.68965517;
 	const oliveOilAmount = 0.02068966;
 
 	const totalDoughWeight = doughBallWeight * numberOfBalls;
 	const totalFlour = totalDoughWeight / (1 + HYDRATION + oliveOilAmount);
+	/* useEffect(() => {
+		const tl = gsap.timeline();
+		console.log('isFirstRender', isFirstRender);
+		if (!isFirstRender) return;
 
+		tl.from('.calculator-item', {
+			autoAlpha: 0,
+			y: -50,
+			duration: 0.5,
+			ease: 'power1.out',
+			stagger: 0.4,
+			onComplete: () => {
+				gsap.set('.calculator-item', { clearProps: 'all' });
+			}
+		});
+	}, []); */
 	const percentages = {
 		first: {
 			flour: HYDRATION,
@@ -45,13 +61,13 @@ export default function FullPoolishCalculator() {
 	//todo checkbox for switch to 5% - 10% sourdough in the main dough. and little yeast in poolish
 	return (
 		<div className='space-y-8'>
-			<header>
+			<header className='calculator-item'>
 				<h1 className='text-2xl md:text-6xl uppercase font-bold'>Pizza Dough Calculator</h1>
 				<h2 className='text-md mt-0 mb-4 uppercase font-bold'>Recipe by Vito Iacopelli</h2>
 			</header>
 
 			<section className='grid md:flex gap-4 md:justify-between'>
-				<form className='space-y-4'>
+				<form className='calculator-item space-y-4'>
 					<div>
 						<label className='block text-base font-medium text-left'>Dough Ball Weight (g):</label>
 						<input
@@ -72,7 +88,7 @@ export default function FullPoolishCalculator() {
 						/>
 					</div>
 				</form>
-				<aside>
+				<aside className='calculator-item'>
 					<h2 className='text-2xl font-semibold'>Ingredients:</h2>
 					<ul>
 						<li>{(firstMixture.flour + secondMixture.flour).toFixed(2)}g Flour</li>
@@ -84,7 +100,7 @@ export default function FullPoolishCalculator() {
 					</ul>
 				</aside>
 			</section>
-			<section className='md:grid gap-10 grid-cols-3'>
+			<section className='md:grid gap-10 grid-cols-3 calculator-item'>
 				<h3 className='font-semibold text-xl md:text-3xl self-center'>
 					Total Dough Weight: {totalDoughWeight}g
 				</h3>

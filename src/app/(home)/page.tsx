@@ -73,7 +73,7 @@ export default function Home() {
 						<PizzaModel />
 					</Suspense>
 				</Canvas>
-				<FullPoolishCalculator />
+				<FullPoolishCalculator key='calc' />
 			</section>
 		</main>
 	);
