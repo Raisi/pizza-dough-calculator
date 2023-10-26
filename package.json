@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"install": "npm install --registry='https://registry.npmjs.org/' --"
+		"insFromDefault": "npm install --registry='https://registry.npmjs.org/' --"
 	},
 	"dependencies": {
 		"@react-three/drei": "^9.88.5",
