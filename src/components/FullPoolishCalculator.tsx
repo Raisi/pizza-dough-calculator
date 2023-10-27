@@ -2,7 +2,7 @@
 
 import gsap from 'gsap';
 import { useEffect, useState } from 'react';
-import { useIsFirstRender } from 'usehooks-ts';
+import { useIsFirstRender, useIsomorphicLayoutEffect } from 'usehooks-ts';
 
 export default function FullPoolishCalculator() {
 	const [doughBallWeight, setDoughBallWeight] = useState(310);
@@ -13,22 +13,7 @@ export default function FullPoolishCalculator() {
 
 	const totalDoughWeight = doughBallWeight * numberOfBalls;
 	const totalFlour = totalDoughWeight / (1 + HYDRATION + oliveOilAmount);
-	/* useEffect(() => {
-		const tl = gsap.timeline();
-		console.log('isFirstRender', isFirstRender);
-		if (!isFirstRender) return;
 
-		tl.from('.calculator-item', {
-			autoAlpha: 0,
-			y: -50,
-			duration: 0.5,
-			ease: 'power1.out',
-			stagger: 0.4,
-			onComplete: () => {
-				gsap.set('.calculator-item', { clearProps: 'all' });
-			}
-		});
-	}, []); */
 	const percentages = {
 		first: {
 			flour: HYDRATION,
